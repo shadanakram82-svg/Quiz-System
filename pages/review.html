@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Answers - Online Quiz System</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/themes.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .review-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .review-card {
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .status-correct { background: rgba(16, 185, 129, 0.1); color: var(--success-color); }
+        .status-wrong { background: rgba(239, 68, 68, 0.1); color: var(--danger-color); }
+        .status-unanswered { background: var(--input-bg); color: var(--text-muted); }
+        
+        .option-review {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border: 2px solid var(--input-border);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            background: var(--input-bg);
+            position: relative;
+        }
+        .option-review.correct-ans {
+            border-color: var(--success-color);
+            background: rgba(16, 185, 129, 0.05);
+        }
+        .option-review.wrong-ans {
+            border-color: var(--danger-color);
+            background: rgba(239, 68, 68, 0.05);
+        }
+        
+        .option-letter {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 1rem;
+        }
+        .option-review.correct-ans .option-letter {
+            background: var(--success-color);
+            color: white;
+        }
+        .option-review.wrong-ans .option-letter {
+            background: var(--danger-color);
+            color: white;
+        }
+        .ans-icon {
+            margin-left: auto;
+            font-size: 1.2rem;
+        }
+        .correct-ans .ans-icon { color: var(--success-color); }
+        .wrong-ans .ans-icon { color: var(--danger-color); }
+
+        .explanation {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(59, 130, 246, 0.05);
+            border-left: 4px solid var(--info-color);
+            border-radius: 0 8px 8px 0;
+        }
+        .explanation h4 {
+            color: var(--info-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="dashboard.html" class="nav-logo">
+                <i class="fas fa-graduation-cap"></i> QuizPro
+            </a>
+            <div class="nav-links">
+                <a href="result.html"><i class="fas fa-arrow-left"></i> Back to Result</a>
+                <a href="dashboard.html"><i class="fas fa-home"></i> Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content container">
+        
+        <div class="review-container">
+            <h2 class="mb-4 text-center">Review Answers</h2>
+            
+            <div id="review-list">
+                <!-- Populated by JS -->
+            </div>
+
+            <div class="text-center mt-4 mb-4 flex gap-2 justify-center">
+                <button id="btn-restart" class="btn btn-primary" style="background: var(--warning-color);">
+                    <i class="fas fa-redo"></i> Restart Quiz
+                </button>
+                <a href="dashboard.html" class="btn btn-outline">Go to Dashboard</a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Scripts -->
+    <script src="../js/theme.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/review.js"></script>
+</body>
+</html>

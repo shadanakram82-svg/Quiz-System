@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Online Quiz System</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/themes.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .profile-card {
+            padding: 2rem;
+            text-align: center;
+        }
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--accent-light);
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 0 auto 1rem auto;
+        }
+        .settings-card {
+            padding: 2rem;
+        }
+        .settings-section {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        .settings-section:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        .theme-options, .accent-options {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .theme-btn {
+            padding: 1rem;
+            border: 2px solid var(--input-border);
+            border-radius: 8px;
+            background: var(--input-bg);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            flex: 1;
+            transition: all 0.2s;
+        }
+        .theme-btn.active {
+            border-color: var(--accent-color);
+            background: var(--accent-light);
+        }
+        .accent-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: transform 0.2s;
+        }
+        .accent-circle.active {
+            transform: scale(1.1);
+            border-color: var(--text-primary);
+        }
+
+        /* Drag and Drop Styling */
+        .drag-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+        }
+        .drag-item {
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: grab;
+        }
+        .drag-item.dragging {
+            opacity: 0.5;
+            background: var(--accent-light);
+        }
+        .drag-handle {
+            color: var(--text-muted);
+            cursor: grab;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="dashboard.html" class="nav-logo">
+                <i class="fas fa-graduation-cap"></i> QuizPro
+            </a>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-links">
+                <a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="history.html"><i class="fas fa-history"></i> History</a>
+                <a href="profile.html" class="active"><i class="fas fa-user"></i> Profile</a>
+                <a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content container">
+        
+        <h2>Profile & Settings</h2>
+        
+        <div class="profile-grid">
+            
+            <!-- Profile Info -->
+            <div class="glass-panel profile-card">
+                <div class="avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3 id="profile-name">User Name</h3>
+                <p class="text-muted mb-3" id="profile-email">user@example.com</p>
+                
+                <button class="btn btn-outline w-full mb-2">Edit Profile</button>
+                <button class="btn btn-outline w-full" style="color:var(--danger-color); border-color:var(--danger-color);">Change Password</button>
+            </div>
+
+            <!-- Settings -->
+            <div class="glass-panel settings-card">
+                
+                <!-- Appearance -->
+                <div class="settings-section">
+                    <h3><i class="fas fa-paint-brush text-muted"></i> Appearance</h3>
+                    
+                    <div class="mt-3">
+                        <label class="form-label">Theme Mode</label>
+                        <div class="theme-options">
+                            <div class="theme-btn" data-mode="light" id="theme-light">
+                                <i class="fas fa-sun" style="font-size: 1.5rem; color: #f59e0b;"></i>
+                                Light
+                            </div>
+                            <div class="theme-btn" data-mode="dark" id="theme-dark">
+                                <i class="fas fa-moon" style="font-size: 1.5rem; color: #8b5cf6;"></i>
+                                Dark
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <label class="form-label">Accent Color</label>
+                        <div class="accent-options">
+                            <div class="accent-circle" data-color="blue" style="background: #4f46e5;"></div>
+                            <div class="accent-circle" data-color="green" style="background: #10b981;"></div>
+                            <div class="accent-circle" data-color="purple" style="background: #8b5cf6;"></div>
+                            <div class="accent-circle" data-color="orange" style="background: #f97316;"></div>
+                            <div class="accent-circle" data-color="pink" style="background: #ec4899;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notifications -->
+                <div class="settings-section">
+                    <h3><i class="fas fa-bell text-muted"></i> Notifications</h3>
+                    
+                    <div class="flex justify-between items-center mt-3">
+                        <div>
+                            <h4>Email Alerts</h4>
+                            <p class="text-sm text-muted">Receive quiz results via email</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="flex justify-between items-center mt-3">
+                        <div>
+                            <h4>Browser Notifications</h4>
+                            <p class="text-sm text-muted">Get reminded for daily quizzes</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Difficulty Priority -->
+                <div class="settings-section">
+                    <h3><i class="fas fa-sort-amount-down text-muted"></i> Difficulty Priority</h3>
+                    <p class="text-sm text-muted mt-1">Reorder the difficulties below to set your preference for quizzes. Top is highest priority.</p>
+                    
+                    <ul class="drag-list" id="drag-list">
+                        <!-- Populated by JS -->
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Scripts -->
+    <script src="../js/theme.js"></script>
+    <script src="../js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Setup Profile Info
+            if (App.user) {
+                document.getElementById('profile-name').innerText = App.user.name;
+                document.getElementById('profile-email').innerText = App.user.email;
+            }
+
+            // Theme UI Logic
+            const currentTheme = localStorage.getItem(App.getStorageKey('quiz_theme')) || 'light';
+            const currentAccent = localStorage.getItem(App.getStorageKey('quiz_accent')) || 'blue';
+
+            // Set active states
+            const themeBtns = document.querySelectorAll('.theme-btn');
+            themeBtns.forEach(btn => {
+                if (btn.getAttribute('data-mode') === currentTheme) {
+                    btn.classList.add('active');
+                }
+                btn.addEventListener('click', () => {
+                    themeBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    Theme.applyTheme(btn.getAttribute('data-mode'));
+                });
+            });
+
+            const accentCircles = document.querySelectorAll('.accent-circle');
+            accentCircles.forEach(circle => {
+                if (circle.getAttribute('data-color') === currentAccent) {
+                    circle.classList.add('active');
+                }
+                circle.addEventListener('click', () => {
+                    accentCircles.forEach(c => c.classList.remove('active'));
+                    circle.classList.add('active');
+                    Theme.applyAccent(circle.getAttribute('data-color'));
+                });
+            });
+
+            // Drag and Drop Logic (Difficulty Priority)
+            const dragList = document.getElementById('drag-list');
+            
+            // Initialize list from LocalStorage or default
+            const defaultPriority = ["Easy", "Medium", "Hard", "Expert"];
+            let savedPriority = JSON.parse(localStorage.getItem(App.getStorageKey('quiz_difficulty_priority')));
+            
+            if (!savedPriority || savedPriority.length !== 4) {
+                savedPriority = defaultPriority;
+                localStorage.setItem(App.getStorageKey('quiz_difficulty_priority'), JSON.stringify(savedPriority));
+            }
+
+            function renderDragList() {
+                dragList.innerHTML = '';
+                savedPriority.forEach(diff => {
+                    const li = document.createElement('li');
+                    li.className = 'drag-item';
+                    li.setAttribute('draggable', 'true');
+                    li.setAttribute('data-difficulty', diff);
+                    li.innerHTML = `<i class="fas fa-bars drag-handle"></i> ${diff}`;
+                    dragList.appendChild(li);
+                });
+                attachDragEvents();
+            }
+
+            function attachDragEvents() {
+                const draggables = document.querySelectorAll('.drag-item');
+
+                draggables.forEach(draggable => {
+                    draggable.addEventListener('dragstart', () => {
+                        draggable.classList.add('dragging');
+                    });
+
+                    draggable.addEventListener('dragend', () => {
+                        draggable.classList.remove('dragging');
+                        savePriority();
+                    });
+                });
+            }
+            
+            function savePriority() {
+                const items = document.querySelectorAll('.drag-item');
+                const newPriority = Array.from(items).map(item => item.getAttribute('data-difficulty'));
+                localStorage.setItem(App.getStorageKey('quiz_difficulty_priority'), JSON.stringify(newPriority));
+                App.showToast("Difficulty priority saved!", "success");
+            }
+
+            renderDragList();
+
+            dragList.addEventListener('dragover', e => {
+                e.preventDefault();
+                const afterElement = getDragAfterElement(dragList, e.clientY);
+                const draggable = document.querySelector('.dragging');
+                if (afterElement == null) {
+                    dragList.appendChild(draggable);
+                } else {
+                    dragList.insertBefore(draggable, afterElement);
+                }
+            });
+
+            function getDragAfterElement(container, y) {
+                const draggableElements = [...container.querySelectorAll('.drag-item:not(.dragging)')];
+
+                return draggableElements.reduce((closest, child) => {
+                    const box = child.getBoundingClientRect();
+                    const offset = y - box.top - box.height / 2;
+                    if (offset < 0 && offset > closest.offset) {
+                        return { offset: offset, element: child };
+                    } else {
+                        return closest;
+                    }
+                }, { offset: Number.NEGATIVE_INFINITY }).element;
+            }
+        });
+    </script>
+</body>
+</html>

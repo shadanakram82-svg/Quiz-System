@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Online Quiz System</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/themes.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .login-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+        .login-card {
+            max-width: 400px;
+            width: 100%;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            animation: fadeIn 0.8s ease-out;
+        }
+        .login-logo {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+        .login-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .login-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        .text-left {
+            text-align: left;
+        }
+        .password-wrapper {
+            position: relative;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 1rem;
+            top: 2.3rem; /* adjusted based on label */
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        .login-btn {
+            width: 100%;
+            padding: 0.875rem;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-wrapper">
+        <div class="glass-panel login-card">
+            <i class="fas fa-graduation-cap login-logo"></i>
+            <h1 class="login-title">Welcome Back</h1>
+            <p class="login-subtitle">Login to access your dashboard</p>
+
+            <form id="login-form" class="text-left" novalidate>
+                <div class="form-group">
+                    <label class="form-label" for="email">Email Address</label>
+                    <i class="fas fa-envelope form-icon"></i>
+                    <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group password-wrapper">
+                    <label class="form-label" for="password">Password</label>
+                    <i class="fas fa-lock form-icon"></i>
+                    <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
+                    <i class="fas fa-eye toggle-password" id="toggle-password"></i>
+                </div>
+
+                <div class="login-options">
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; color: var(--text-secondary);">
+                        <input type="checkbox" id="remember"> Remember Me
+                    </label>
+                    <a href="#" id="forgot-btn">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn btn-primary login-btn">
+                    Login <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/theme.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/validation.js"></script>
+    <script src="../js/login.js"></script>
+</body>
+</html>

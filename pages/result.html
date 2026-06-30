@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Result - Online Quiz System</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/themes.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .result-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .canvas-container {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            margin: 0 auto 2rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .canvas-container canvas {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .result-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .r-stat {
+            background: var(--input-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--input-border);
+        }
+        .r-stat.correct { color: var(--success-color); border-color: var(--success-color); }
+        .r-stat.wrong { color: var(--danger-color); border-color: var(--danger-color); }
+        
+        .r-stat h3 { font-size: 1.5rem; margin-bottom: 0.2rem; color: inherit; }
+        .r-stat p { font-size: 0.85rem; color: var(--text-secondary); }
+
+        .performance-msg {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+        .grade-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .grade-pass { background: rgba(16, 185, 129, 0.2); color: var(--success-color); }
+        .grade-fail { background: rgba(239, 68, 68, 0.2); color: var(--danger-color); }
+
+        @media (max-width: 600px) {
+            .result-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="dashboard.html" class="nav-logo">
+                <i class="fas fa-graduation-cap"></i> QuizPro
+            </a>
+            <div class="nav-links">
+                <a href="dashboard.html"><i class="fas fa-home"></i> Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content container">
+        
+        <div class="result-container glass-panel" style="padding: 3rem 2rem;">
+            
+            <h2 class="mb-1" id="topic-title">Quiz Result</h2>
+            <div class="grade-badge" id="grade-badge">PASS</div>
+            
+            <div class="canvas-container">
+                <canvas id="score-chart" width="250" height="250"></canvas>
+            </div>
+
+            <div class="performance-msg" id="performance-msg">
+                Excellent work! You have mastered this topic.
+            </div>
+
+            <div class="result-stats">
+                <div class="r-stat">
+                    <h3 id="stat-total">10</h3>
+                    <p>Total Questions</p>
+                </div>
+                <div class="r-stat correct">
+                    <h3 id="stat-correct">8</h3>
+                    <p>Correct</p>
+                </div>
+                <div class="r-stat wrong">
+                    <h3 id="stat-wrong">2</h3>
+                    <p>Wrong</p>
+                </div>
+                <div class="r-stat">
+                    <h3 id="stat-time">05:30</h3>
+                    <p>Time Taken</p>
+                </div>
+            </div>
+
+            <div class="flex gap-2 justify-center mt-4" style="flex-wrap: wrap;">
+                <button id="btn-restart" class="btn btn-primary" style="background: var(--warning-color);">
+                    <i class="fas fa-redo"></i> Restart Quiz
+                </button>
+                <a href="review.html" class="btn btn-primary">
+                    <i class="fas fa-search"></i> Review Answers
+                </a>
+                <a href="dashboard.html" class="btn btn-outline">
+                    <i class="fas fa-home"></i> Back to Dashboard
+                </a>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Scripts -->
+    <script src="../js/theme.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/canvas.js"></script>
+    <script src="../js/result.js"></script>
+</body>
+</html>

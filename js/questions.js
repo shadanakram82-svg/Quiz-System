@@ -1,0 +1,95 @@
+// Fallback questions array in case fetch from questions.json fails (e.g. file:// protocol CORS issues)
+const fallbackQuestions = [
+    {
+        "id": 1,
+        "question": "What is the capital of France?",
+        "options": ["London", "Berlin", "Paris", "Madrid"],
+        "answer": 2,
+        "explanation": "Paris is the capital and most populous city of France.",
+        "topic": "Geography",
+        "difficulty": "Easy"
+    },
+    {
+        "id": 2,
+        "question": "Which language runs in a web browser?",
+        "options": ["Java", "C", "Python", "JavaScript"],
+        "answer": 3,
+        "explanation": "JavaScript is the primary scripting language used to create interactive effects within web browsers.",
+        "topic": "Technology",
+        "difficulty": "Easy"
+    },
+    {
+        "id": 3,
+        "question": "What does CSS stand for?",
+        "options": ["Central Style Sheets", "Cascading Style Sheets", "Cascading Simple Sheets", "Cars SUVs Sailboats"],
+        "answer": 1,
+        "explanation": "CSS stands for Cascading Style Sheets, used for styling web pages.",
+        "topic": "Technology",
+        "difficulty": "Medium"
+    },
+    {
+        "id": 4,
+        "question": "What does HTML stand for?",
+        "options": ["Hypertext Markup Language", "Hypertext Markdown Language", "Hyperloop Machine Language", "Helicopters Terminals Motorboats Lamborginis"],
+        "answer": 0,
+        "explanation": "HTML is the standard markup language for documents designed to be displayed in a web browser.",
+        "topic": "Technology",
+        "difficulty": "Medium"
+    },
+    {
+        "id": 5,
+        "question": "What year was JavaScript launched?",
+        "options": ["1996", "1995", "1994", "none of the above"],
+        "answer": 1,
+        "explanation": "JavaScript was created by Brendan Eich in 1995.",
+        "topic": "Technology",
+        "difficulty": "Hard"
+    },
+    {
+        "id": 6,
+        "question": "Which planet is known as the Red Planet?",
+        "options": ["Earth", "Mars", "Jupiter", "Venus"],
+        "answer": 1,
+        "explanation": "Mars is known as the Red Planet because iron oxide on its surface gives it a reddish appearance.",
+        "topic": "Science",
+        "difficulty": "Hard"
+    },
+    {
+        "id": 7,
+        "question": "What is the largest ocean on Earth?",
+        "options": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+        "answer": 3,
+        "explanation": "The Pacific Ocean is the largest and deepest of Earth's oceanic divisions.",
+        "topic": "Geography",
+        "difficulty": "Expert"
+    },
+    {
+        "id": 8,
+        "question": "Who painted the Mona Lisa?",
+        "options": ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Claude Monet"],
+        "answer": 2,
+        "explanation": "The Mona Lisa is a half-length portrait painting by Italian artist Leonardo da Vinci.",
+        "topic": "Art",
+        "difficulty": "Expert"
+    },
+    {
+        "id": 9,
+        "question": "What is the chemical symbol for Gold?",
+        "options": ["Ag", "Au", "Fe", "Cu"],
+        "answer": 1,
+        "explanation": "The chemical symbol for Gold is Au, derived from the Latin word 'aurum'.",
+        "topic": "Science",
+        "difficulty": "Easy"
+    },
+    {
+        "id": 10,
+        "question": "How many continents are there?",
+        "options": ["5", "6", "7", "8"],
+        "answer": 2,
+        "explanation": "There are 7 continents: Asia, Africa, North America, South America, Antarctica, Europe, and Australia.",
+        "topic": "Geography",
+        "difficulty": "Medium"
+    }
+];
+
+window.quizQuestions = fallbackQuestions;
